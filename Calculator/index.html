@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <!--tela onde aparecerar os números-->
+        <div class="input" id="input"></div>
+        <!--sinais de operação = soma, subtração, multiplicação e divisão-->
+        <div class="operators">
+            <div onclick="insert('+')">+</div>
+            <div onclick="insert('-')">-</div>
+            <div onclick="insert('*')">*</div>
+            <div onclick="insert('/')">/</div>
+        </div>
+        <div class="leftPanel">
+            <div class="numbers">
+                <div onclick="insert('7')">7</div>
+                <div onclick="insert('8')">8</div>
+                <div onclick="insert('9')">9</div>
+            </div>
+            <div class="numbers">
+                <div onclick="insert('4')">4</div>
+                <div onclick="insert('5')">5</div>
+                <div onclick="insert('6')">6</div>
+            </div>
+            <div class="numbers">
+                <div onclick="insert('1')">1</div>
+                <div onclick="insert('2')">2</div>
+                <div onclick="insert('3')">3</div>
+            </div>
+            <div class="numbers">
+                <div onclick="insert('0')">0</div>
+                <div onclick="insert('.')">.</div>
+                <div id="clear" onclick="clean()">C</div>
+            </div>            
+        </div>
+        <div class="equal" onclick="calcular()">=</div>
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+body{
+    background-color: rgb(163, 162, 162);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2{
+    text-align: center;
+    color: yellow;
+    margin-top: 50px;
+}
+
+#numeros{
+    background-color: cornflowerblue;
+    width: 300px;
+    margin: auto;
+    font-size: 25px;    
+    text-align: center;
+    font-weight: bold;
+    color: yellow;    
+    border-radius: 10px;
+    margin-top: -10px;
+}
