@@ -1,9 +1,13 @@
 //Função que cria item label
 
-let banco = [
-    {'tarefa': 'Estudar JS', 'status': ''},
-    {'tarefa': 'Netflix', 'status': 'checked'}
-]
+// let banco = [
+//     {'tarefa': 'Estudar JS', 'status': ''},
+//     {'tarefa': 'Netflix', 'status': 'checked'}
+// ]
+
+//armazena no local storage do navegador
+const getBanco = () => JSON.parse(localStorage.getItem('todoList')) ?? [];
+const setBanco = (banco) => localStorage.setItem('todoList', JSON.stringify(banco));
 
 //criar o elemento label e dentro cria os elementos input e div
 const criarItem = (tarefa, status, indice) => {
@@ -28,6 +32,7 @@ const limparTarefas = () => {
 //aparece as tarefas inceridas no banco/array
 const atualizarTela = () => {
     limparTarefas();
+    const banco = getBanco()
     banco.forEach ((item, indice) => criarItem (item.tarefa, item.status, indice));
 }
 
@@ -35,14 +40,25 @@ const inserirItem = (evento) => {
     const tecla = evento.key;
     const text = evento.target.value;
     if(tecla === 'Enter'){
+        const banco = getBanco();
         banco.push ({'tarefa': text, 'status': ''});
+        setBanco(banco);
         atualizarTela();
         evento.target.value = ''
     }
 }
 
 const removerItem = (indice) => {
-    banco.splice(indice, 1)
+    const banco = getBanco();
+    banco.splice(indice, 1);
+    setBanco(banco);
+    atualizarTela();
+}
+
+const atualizarItem = (indice) => {    
+    const banco = getBanco();
+    banco[indice].status = banco[indice].status === '' ? 'checked' : '';
+    setBanco(banco);
     atualizarTela();
 }
 
@@ -51,6 +67,9 @@ const clickItem = (evento) => {
     if (elemento.type === 'button'){
         const indice = elemento.dataset.indice;
         removerItem(indice);
+    }else if (elemento.type === 'checkbox') {
+        const indice = elemento.dataset.indice;
+        atualizarItem(indice);
     }
 }
 
