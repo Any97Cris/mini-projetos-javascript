@@ -1,16 +1,16 @@
-const turnOn = document.getElementById('turnOn');
-const turnOff = document.getElementById('turnOff');
 const lamp = document.getElementById('lamp');
+const statusBotao = document.getElementById('status');
 
-function isLampBroken () {
-    return lamp.src.indexOf('quebrada') > -1
+
+
+function isLampBroken () {	
+		return lamp.src.indexOf('quebrada') > -1; 	   	
 }
 
-//troca a imagem atual pela lâmpada ligada
 function lampOn () {
-    if(!isLampBroken ()){
-        lamp.src = './img/ligada.png';
-    }    
+	if(!isLampBroken ()){
+		lamp.src = './img/ligada.png';
+	}
 }
 
 //troca a imagem atual pela lâmpada desligada
@@ -18,16 +18,25 @@ function lampOff () {
     if(!isLampBroken ()){
         lamp.src = './img/desligada.png';
     }
-	
-}
+}	
+
 
 //troca a imagem atual pela lâmpada ligada
 function lampBroken () {
     lamp.src = './img/quebrada.png';
 }
 
-turnOn.addEventListener ('click', lampOn);//clicar no botão desligar lâmpada acende
-turnOff.addEventListener ('click', lampOff);//clicar no botão desligar lâmpada desliga
-lamp.addEventListener('mouseover', lampOn); //mouse em cima da imagem
-lamp.addEventListener('mouseleave', lampOff);//mouse não esta em cima da imagem
+function lampStatus () {	
+    if(statusBotao.textContent == 'Ligar'){
+    	lampOn();
+    	statusBotao.textContent = 'Desligar';    	
+    }else{
+    	lampOff();
+    	statusBotao.textContent = 'Ligar';    	   	
+    }
+}
+
+statusBotao.addEventListener('click', lampStatus);//liga e desliga lâmpada
 lamp.addEventListener('dblclick', lampBroken);//clique duplo
+lamp.addEventListener('mouseover', lampOn);
+lamp.addEventListener('mouseleave',lampOff)
